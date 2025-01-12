@@ -7,14 +7,21 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 app.post("/",async(req,res)=>{
 //5511949343050
     const phones = [
-        {phone:"5511940641960",message:"Olá Renan"},
-        {phone:"5511940641960",message:"Vi que está com alguns desafios para executar a tarefa de vínculo do tiny"},
-        {phone:"5511940641960",message:"Sou responsável pelo time de suporte e gostaria de te ajudar"},
+        {phone:"5511949343050",message:"A"},
+        {phone:"5511949343050",message:"M"},
+        {phone:"5511949343050",message:"O"},
+        {phone:"5511949343050",message:"R"},
+        {phone:"5511949343050",message:"A"},
+        {phone:"5511949343050",message:"C"},
+        {phone:"5511949343050",message:"O"},
+        {phone:"5511949343050",message:"R"},
+        {phone:"5511949343050",message:"D"},
+        {phone:"5511949343050",message:"A"},
     ]
 
     const requests = []
     for (let i = 0; i < phones.length; i++) {
-        await sleep(3000)
+        await sleep(1000)
         const request = await axios.post(`https://evolution.bdanalytics.com.br/message/sendText/renanjoia`,{"number":`${phones[i].phone}@s.whatsapp.net`,
 	"text":`${phones[i].message}}`},{headers: {apiKey:"D8ADB0E69808-45C4-BA16-81768364F729"}})
         
@@ -46,7 +53,9 @@ process.on('SIGINT', () => {
     });
 });
 
-app.listen(process.env.PORT || 5000, () => {
-    console.log("Server is running...")
+const port = process.env.PORT || 3000
+
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}...`)
 })
 
