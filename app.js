@@ -35,21 +35,27 @@ app.get("/",(req,res)=>{
     return res.json({name:"Hello World"})
 })
 
-// Lidar com SIGTERM
 process.on('SIGTERM', () => {
-    console.log('SIGTERM signal received: closing HTTP server');
+    console.log('SIGTERM received. Performing graceful shutdown...');
     server.close(() => {
-        console.log('HTTP server closed');
+        console.log('Server closed. Exiting process...');
         process.exit(0);
     });
 });
 
-// Lidar com SIGINT
 process.on('SIGINT', () => {
-    console.log('SIGINT signal received: closing HTTP server');
+    console.log('SIGINT received. Performing graceful shutdown...');
     server.close(() => {
-        console.log('HTTP server closed');
+        console.log('Server closed. Exiting process...');
         process.exit(0);
+    });
+});
+
+// Tratamento de erros não capturados
+process.on('uncaughtException', (error) => {
+    console.error('Uncaught Exception:', error);
+    server.close(() => {
+        process.exit(1);
     });
 });
 
