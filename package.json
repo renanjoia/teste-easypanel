@@ -7,7 +7,7 @@
   "type": "commonjs",
   "scripts": {
     "dev": "nodemon app.js",
-    "start": "node app.js"
+    "start": "node ./app.js"
   },
   "engines": {
     "npm": "10.x",
