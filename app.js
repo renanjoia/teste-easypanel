@@ -35,30 +35,6 @@ app.get("/",(req,res)=>{
     return res.json({name:"Hello World"})
 })
 
-process.on('SIGTERM', () => {
-    console.log('SIGTERM received. Performing graceful shutdown...');
-    server.close(() => {
-        console.log('Server closed. Exiting process...');
-        process.exit(0);
-    });
-});
-
-process.on('SIGINT', () => {
-    console.log('SIGINT received. Performing graceful shutdown...');
-    server.close(() => {
-        console.log('Server closed. Exiting process...');
-        process.exit(0);
-    });
-});
-
-// Tratamento de erros não capturados
-process.on('uncaughtException', (error) => {
-    console.error('Uncaught Exception:', error);
-    server.close(() => {
-        process.exit(1);
-    });
-});
-
 const port = process.env.PORT || 3000
 
 app.listen(port, () => {
