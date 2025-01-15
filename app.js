@@ -35,7 +35,7 @@ app.get("/",(req,res)=>{
     return res.json({name:"Hello World"})
 })
 
-const port = 3002
+const port = 8080
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}...`)
