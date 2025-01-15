@@ -34,8 +34,8 @@ app.post("/",async(req,res)=>{
 app.get("/",(req,res)=>{
     return res.json({name:"Hello World"})
 })
-console.log(process.env.PORT)
-const port = process.env.PORT || 3002
+
+const port = 3002
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}...`)
